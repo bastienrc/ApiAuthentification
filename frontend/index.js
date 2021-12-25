@@ -91,7 +91,7 @@ function accountPage (page) {
 function accountReadProfil (objUser) {
   // console.log(objUser)
   console.log('--> View Profil')
-  const avatar = objUser.avatarUrl ? objUser.avatarUrl : "avatar_default.jpg"
+  const avatar = objUser.avatarUrl ? objUser.avatarUrl : `${apiUrl}/images/avatar_default.jpg`
   const firstname = objUser.firstname ? objUser.firstname : "No Firstname"
   const lastname = objUser.lastname ? objUser.lastname : "No Lastname"
   const email = objUser.email ? objUser.email : 'No Email'
@@ -100,7 +100,7 @@ function accountReadProfil (objUser) {
   document.getElementById('accountProfil').innerHTML = `
     <div class="col-6">
       <div id="img-preview">
-        <img id="avatar" src="./images/${avatar}" />
+        <img id="avatar" src="${avatar}" />
       </div>
     </div>
     <div class="col-6">
@@ -120,34 +120,34 @@ function accountReadProfil (objUser) {
 
 function accountEditProfil (objUser) {
   console.log('--> Edit Profil')
-  // console.log(objUser)
-  const avatar = objUser.avatarUrl ? objUser.avatarUrl : "avatar_default.jpg"
+  console.log(objUser)
+  const avatar = objUser.avatarUrl ? objUser.avatarUrl : `${apiUrl}/images/avatar_default.jpg`
   const firstname = objUser.firstname ? objUser.firstname : ""
   const lastname = objUser.lastname ? objUser.lastname : ""
   const email = objUser.email ? objUser.email : ''
   const bio = objUser.bio ? objUser.bio : ""
 
-  // <div class="col-6">
-  // 	<div id="img-preview"><img id="avatar" src="/images/avatar_default.jpg" /></div>
-  // 	<label for="avatar">Choisissez votre Avatar</label>
-  // 	<input type="file" accept="image/*" name="avatar" id="avatar">
-  // </div>
+    // <div class="col-6">
+    //   <div id="img-preview">
+    //     <img id="avatar" src="./images/${avatar}" />
+    //   </div>
+    // </div>
 
   document.getElementById('accountProfil').innerHTML = `
-    <div class="col-6">
-      <div id="img-preview">
-        <img id="avatar" src="./images/${avatar}" />
+    <form id="accountForm" method="post">
+      <div class="col-6">
+        <div id="img-preview"><img src="${avatar}" /></div>
+        <label for="avatar">Choisissez votre Avatar</label>
+        <input type="file" accept=".png, .jpg, .jpeg" name="avatar" id="avatar" value="${avatar}">
       </div>
-    </div>
-    <div class="col-6">
-      <form id="accountForm" method="post">
-        <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="${firstname}">
-        <input type="text" name="lastname" id="lastname" placeholder="Nom" value="${lastname}">
-        <input type="email" name="email" id="email" placeholder="E-Mail" value="${email}" required>
-        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Bio">${bio}</textarea>
-        <input type="submit" onClick="updateUser()" value="Enregistrer">
-      </form>
-    </div>
+      <div class="col-6">
+          <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="${firstname}">
+          <input type="text" name="lastname" id="lastname" placeholder="Nom" value="${lastname}">
+          <input type="email" name="email" id="email" placeholder="E-Mail" value="${email}" required>
+          <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Bio">${bio}</textarea>
+          <input type="submit" onClick="updateUser()" value="Enregistrer">
+      </div>
+    </form>
 
     <div class="col-12">
       <div style="font-size:0.6rem;text-align:center;margin:1px;color:#999">
