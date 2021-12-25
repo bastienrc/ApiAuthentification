@@ -324,12 +324,7 @@ input, textarea { width: 100% }
   margin: 0.3rem 0;
 }
 
-#img-preview {
-  margin: 10px auto;
-	height: 60vh;
-}
-
-#account [type="file"] {
+#accountForm [type="file"] {
   height: 0;
   width: 0;
   overflow: hidden;
@@ -376,16 +371,21 @@ input, textarea { width: 100% }
 
 }
 
-#accountProfil {
+#accountProfil, #accountForm {
 	display: flex;
 	width: 100%;
 	flex-wrap: wrap;
 }
 
-#accountProfil #avatar {
-	padding: 1rem;
+#img-preview {
+  margin: 10px auto;
+	height: 55vh;
+}
+
+#img-preview img {
 	border-radius: 30px;
 }
+
 
 #accountProfil #info:first-child {
 	padding: 2rem 0;
